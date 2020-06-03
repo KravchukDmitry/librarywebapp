@@ -7,10 +7,15 @@
 <body>
 <h1>Author list</h1>
 <table>
+    <tr>
+        <th>ID</th>
+        <th>firstName</th>
+        <th>lastName</th>
+    </tr>
     <tr th:each="author : ${authors}">
-        <th th:text="${author.id}">ID</th>
-        <th th:text="${author.firstName}">Title</th>
-        <th th:text="${author.lastName}">Title</th>
+        <td th:text="${author.id}"></td>
+        <td th:text="${author.firstName}"></td>
+        <td th:text="${author.lastName}"></td>
     </tr>
 </table>
 </body>

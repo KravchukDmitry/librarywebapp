@@ -23,7 +23,7 @@ public class SearchController {
 
     @GetMapping("/restbook")
     public Iterable<Book> restBook(@RequestParam(name = "str") String s) {
-        return bookRepository.findAll();
+        return bookRepository.findByTitleStartingWith(s);
     }
 
 }

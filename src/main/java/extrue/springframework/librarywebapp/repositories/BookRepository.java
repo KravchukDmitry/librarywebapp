@@ -4,4 +4,6 @@ import extrue.springframework.librarywebapp.domain.Book;
 import org.springframework.data.repository.CrudRepository;
 
 public interface BookRepository extends CrudRepository<Book, Long> {
+
+    Iterable<Book> findByTitleStartingWith(String titlePart);
 }

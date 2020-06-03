@@ -26,7 +26,7 @@ public class BootStrapData implements CommandLineRunner {
         timur.getBooks().add(book1);
         book1.getAuthors().add(timur);
 
-        authorRepository.save(timur);
-        bookRepository.save(book1);
+        /*authorRepository.save(timur);
+        bookRepository.save(book1);*/
     }
 }
