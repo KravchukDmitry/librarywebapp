@@ -26,4 +26,11 @@ public class SearchController {
         return bookRepository.findByTitleStartingWith(s);
     }
 
+    @GetMapping("/restbook1")
+    public Book restBook1(@RequestParam(name = "str") Long l) {
+        return bookRepository.getBooks1(l);
+    }
+
+
+
 }

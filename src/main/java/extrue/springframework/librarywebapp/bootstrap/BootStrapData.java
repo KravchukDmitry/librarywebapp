@@ -4,11 +4,16 @@ import extrue.springframework.librarywebapp.domain.Author;
 import extrue.springframework.librarywebapp.domain.Book;
 import extrue.springframework.librarywebapp.repositories.AuthorRepository;
 import extrue.springframework.librarywebapp.repositories.BookRepository;
-import org.springframework.boot.CommandLineRunner;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component
-public class BootStrapData implements CommandLineRunner {
+@Scope("session")
+@Qualifier("test1")
+public class BootStrapData implements TestCustom {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
@@ -18,15 +23,17 @@ public class BootStrapData implements CommandLineRunner {
         this.bookRepository = bookRepository;
     }
 
-    @Override
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public void run(String... args) {
         Author timur = new Author("Тимур", "Smith");
         Book book1 = new Book("Приключения кокерспаниэля", "4866546");
 
         timur.getBooks().add(book1);
         book1.getAuthors().add(timur);
+    }
 
-        /*authorRepository.save(timur);
-        bookRepository.save(book1);*/
+    @Override
+    public void doSomeThing() {
+
     }
 }
